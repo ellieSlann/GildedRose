@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using GildedRoseEllie.Models;
-using System.IO;
 using System.Collections.Generic;
 
 namespace GildedRoseEllie.Tests
@@ -10,16 +9,13 @@ namespace GildedRoseEllie.Tests
         [Test]
         public void AddItemToInventoryShouldUpdateJsonFile()
         {
-            string path = Directory.GetCurrentDirectory() + @"\Inventory.json";
+            string path = "C:\\MyProjects\\GildedRoseEllie\\GildedRose\\src\\GildedRose.Console\\Inventory.json"; //Directory.GetCurrentDirectory() + @"\Inventory.json";
 
-            var item = new AgedBrie(
-                 new Item
-                 {
-                     Name = "Aged Brie",
-                     Quality = 0,
-                     SellIn = 3
-                 }
-            );
+            var item = new AgedBrie {
+                Name = "Aged Brie",
+                Quality = 0,
+                SellIn = 3
+            };
 
             Inventory.AddItemToInventory(item, path);
             var UpdatedInventory = Inventory.GetInventory(path);
@@ -32,10 +28,10 @@ namespace GildedRoseEllie.Tests
         [Test]
         public void GetInventoryShouldReturnListOfItems()
         {
-            string path = Directory.GetCurrentDirectory() + @"\Inventory.json";
+            string path = "C:\\MyProjects\\GildedRoseEllie\\GildedRose\\src\\GildedRose.Console\\Inventory.json"; //Directory.GetCurrentDirectory() + @"\Inventory.json";
             var InventoryOutput = Inventory.GetInventory(path);
 
-            Assert.IsInstanceOf<List<Item>>(InventoryOutput);
+            Assert.IsInstanceOf<List<CustomItem>>(InventoryOutput);
         }
 
         [Test]

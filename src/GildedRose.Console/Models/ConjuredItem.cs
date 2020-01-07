@@ -2,13 +2,6 @@
 {
     public class ConjuredItem : CustomItem
     {
-        private Item _item;
-
-        public ConjuredItem(Item item) : base(item)
-        {
-            _item = item;
-        }
-
         public override string ItemType => "Conjured Item";
 
         public override void UpdateItem()

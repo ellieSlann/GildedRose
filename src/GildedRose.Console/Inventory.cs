@@ -9,8 +9,6 @@ namespace GildedRoseEllie
 {
     public static class Inventory
     {
-     //   private static string _path;
-
         public static List<CustomItem> GetInventory(string path)
         {
 

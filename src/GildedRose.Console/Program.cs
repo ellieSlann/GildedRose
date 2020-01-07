@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using GildedRoseEllie.Models;
 using System.Linq;
-using System.IO;
 
 namespace GildedRoseEllie
 {
     public static class Program
     {
         public static IList<Item> Items;
+        public static List<CustomItem> customItems;
 
         public static void Main()
         {
@@ -16,15 +16,15 @@ namespace GildedRoseEllie
 
             var path = @"C:\MyProjects\GildedRoseEllie\GildedRose\src\GildedRose.Console\Inventory.json";
 
-            Items = Inventory.GetInventory(path);
+            customItems = Inventory.GetInventory(path);
 
-            foreach (var Item in Items.OfType<CustomItem>())
+            foreach (var Item in customItems.OfType<CustomItem>())
             {
                 if (!Validation.ValidateQuality(Item)) throw new IndexOutOfRangeException("Quality must be between 0 and 50");
                 Item.UpdateItem();
             }
 
-            foreach (var item in Items)
+            foreach (var item in customItems)
             {
                 Console.WriteLine($"Name: {item.Name} SellIn: {item.SellIn} Quality: {item.Quality}");
             }

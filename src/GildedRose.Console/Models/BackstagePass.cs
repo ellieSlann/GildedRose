@@ -2,13 +2,6 @@
 {
     public class BackstagePass : CustomItem
     {
-        private Item _item;
-
-        public BackstagePass(Item item) : base(item)
-        {
-            _item = item;
-        }
-
         public override string ItemType => "Backstage Pass";
 
         public override void UpdateItem()

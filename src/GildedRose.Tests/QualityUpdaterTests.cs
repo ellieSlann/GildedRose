@@ -15,8 +15,7 @@ namespace GildedRose.Tests
         [TestCase("Aged Brie", 2, 0)]
         public void UpdateQualityShouldIncreaseAgedBrieItemQuality(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new AgedBrie(UpdatedItem);
+            var ItemWrapper = new AgedBrie { Name = name, SellIn = sellIn, Quality = quality };
 
             ItemWrapper.UpdateItem();
 
@@ -26,8 +25,7 @@ namespace GildedRose.Tests
         [TestCase("+5 Dexterity Vest", 10, 20)]
         public void UpdateQualityShouldReduceSellInValueAndQuality(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new CustomItem(UpdatedItem);
+            var ItemWrapper = new CustomItem { Name = name, SellIn = sellIn, Quality = quality };
 
             ItemWrapper.UpdateItem();
 
@@ -38,8 +36,7 @@ namespace GildedRose.Tests
         [TestCase("Elixir of the Mongoose", 0, 7)]
         public void UpdateQualityShouldDegradeOutOfDateItemTwiceAsFast(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new CustomItem(UpdatedItem);
+            var ItemWrapper = new CustomItem { Name = name, SellIn = sellIn, Quality = quality };
 
             ItemWrapper.UpdateItem();
 
@@ -49,8 +46,7 @@ namespace GildedRose.Tests
         [TestCase("Elixir of the Mongoose", 0, 7)]
         public void ItemQualityShouldBeLessThan50AndNotBeNegative(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new CustomItem(UpdatedItem);
+            var ItemWrapper = new CustomItem { Name = name, SellIn = sellIn, Quality = quality };
             ItemWrapper.UpdateItem();
             
             Assert.That(ItemWrapper.Quality < 50);
@@ -71,8 +67,7 @@ namespace GildedRose.Tests
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 7, 20)]
         public void BackstagePassesQualityShouldIncreaseBy2WhenSellInIsBetween5and10(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new BackstagePass(UpdatedItem);
+            var ItemWrapper = new BackstagePass { Name = name, SellIn = sellIn, Quality = quality };
             ItemWrapper.UpdateItem();
 
             Assert.That(ItemWrapper.Quality == quality + 2);
@@ -81,8 +76,7 @@ namespace GildedRose.Tests
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 4, 20)]
         public void BackstagePassesQualityShouldIncreaseBy3WhenSellInIsLessThan5(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new BackstagePass(UpdatedItem);
+            var ItemWrapper = new BackstagePass { Name = name, SellIn = sellIn, Quality = quality };
             ItemWrapper.UpdateItem();
 
             Assert.That(ItemWrapper.Quality == quality + 3);
@@ -91,8 +85,7 @@ namespace GildedRose.Tests
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 0, 20)]
         public void BackstagePassesQualityShouldBe0AfterSellInDate(string name, int sellIn, int quality)
         {
-            var UpdatedItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
-            var ItemWrapper = new BackstagePass(UpdatedItem);
+            var ItemWrapper = new BackstagePass { Name = name, SellIn = sellIn, Quality = quality };
             ItemWrapper.UpdateItem();
 
             Assert.That(ItemWrapper.Quality == 0 );
