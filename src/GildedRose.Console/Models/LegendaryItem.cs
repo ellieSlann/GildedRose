@@ -1,23 +1,24 @@
 ﻿namespace GildedRoseEllie.Models
 {
-    public class LegendaryItem : CustomItem
+    public class LegendaryItem : IItem
     {
-        //private Item _item;
+        public string Name { get; set; }
 
-        //public LegendaryItem(Item item) : base(item)
-        //{
-        //    _item = item;
-        //}
+        public int SellIn { get; set; }
 
-        public new string Name {get; set; }
+        public int Quality { get; set; }
 
-        public new int Quality => 80;
-        public new int SellIn => int.MaxValue;
+        public string ItemType { get; set; }
 
-        public override string ItemType => "Legendary Item";
 
-        public override void UpdateItem()
+        public void UpdateItem()
         {
+            //do nothing deliberately
+        }
+
+        public void UpdateQuality()
+        {
+            //do nothing deliberately
         }
     }
 

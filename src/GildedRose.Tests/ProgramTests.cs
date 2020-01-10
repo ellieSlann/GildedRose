@@ -23,29 +23,30 @@ namespace GildedRoseEllie.Tests
             Assert.That(UpdatedInventory[UpdatedInventory.Count - 1].SellIn == item.SellIn);
             Assert.That(UpdatedInventory[UpdatedInventory.Count - 1].Quality == item.Quality);
             Assert.That(UpdatedInventory[UpdatedInventory.Count - 1].Name == item.Name);
+            Assert.That(UpdatedInventory[UpdatedInventory.Count - 1].ItemType == item.ItemType);
         }
 
         [Test]
-        public void GetInventoryShouldReturnListOfItems()
+        public void GetInventoryShouldReturnListOfCustomItems()
         {
             string path = "C:\\MyProjects\\GildedRoseEllie\\GildedRose\\src\\GildedRose.Console\\Inventory.json"; //Directory.GetCurrentDirectory() + @"\Inventory.json";
             var InventoryOutput = Inventory.GetInventory(path);
 
-            Assert.IsInstanceOf<List<CustomItem>>(InventoryOutput);
+            Assert.IsInstanceOf<List<StandardItem>>(InventoryOutput);
         }
 
         [Test]
         public void GetItemTypesShoudCorrectInventoryItemType()
         {
-            var items = new List<Item>
+            var items = new List<StandardItem>
             {
-                 new Item
+                 new StandardItem
                  {
                      Name = "Aged Brie",
                      Quality = 0,
                      SellIn = 3
                  },
-                new Item
+                new StandardItem
                  {
                      Name = "Aged Brie",
                      Quality = 0,

@@ -7,8 +7,9 @@ namespace GildedRoseEllie
 {
     public static class Program
     {
-        public static IList<Item> Items;
-        public static List<CustomItem> customItems;
+        private static IList<IItem> items;
+        public static List<IItem> customItems;
+
 
         public static void Main()
         {
@@ -18,7 +19,7 @@ namespace GildedRoseEllie
 
             customItems = Inventory.GetInventory(path);
 
-            foreach (var Item in customItems.OfType<CustomItem>())
+            foreach (var Item in customItems.OfType<StandardItem>())
             {
                 if (!Validation.ValidateQuality(Item)) throw new IndexOutOfRangeException("Quality must be between 0 and 50");
                 Item.UpdateItem();
@@ -35,6 +36,7 @@ namespace GildedRoseEllie
             //if (updateRequest == "Y")
             //{
             //    //ToDo add items request
+            //to do: include validation
             //}
         }
     }

@@ -55,7 +55,7 @@
     <Compile Include="Models\AgedBrie.cs" />
     <Compile Include="Models\BackstagePass.cs" />
     <Compile Include="Models\ConjuredItem.cs" />
-    <Compile Include="Models\CustomItem.cs" />
+    <Compile Include="Models\StandardItem.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\LegendaryItem.cs" />
     <Compile Include="Program.cs" />

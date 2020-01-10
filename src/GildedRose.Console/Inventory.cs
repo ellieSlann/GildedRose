@@ -9,7 +9,7 @@ namespace GildedRoseEllie
 {
     public static class Inventory
     {
-        public static List<CustomItem> GetInventory(string path)
+        public static List<IItem> GetInventory(string path)
         {
 
             if (File.Exists(path))
@@ -17,16 +17,16 @@ namespace GildedRoseEllie
                 var streamReader = new StreamReader(path);
                 var content = streamReader.ReadToEnd();
 
-                var Inventory = JsonConvert.DeserializeObject<List<CustomItem>>(content);
+                var Inventory = JsonConvert.DeserializeObject<List<IItem>>(content);
                 streamReader.Close();
                 return Inventory;
             }
-            return new List<CustomItem>();
+            return new List<IItem>();
         }
 
-        public static void AddItemToInventory(CustomItem item, string path)
+        public static void AddItemToInventory(IItem item, string path)
         {
-            //var newItem = new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 };
+            //var newItem = new CustomItem { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 };
 
             //if (ValidateQuality(newItem)) Items.Add(newItem);
             //else Console.WriteLine("Item is not valid");

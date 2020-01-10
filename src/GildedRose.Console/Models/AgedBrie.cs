@@ -1,22 +1,19 @@
 ﻿namespace GildedRoseEllie.Models
 {
-    public class AgedBrie : CustomItem
+    public class AgedBrie : IItem
     {
-        //private Item _item;
-        
-        //public AgedBrie(Item item) : base(item)
-        //{
-        //    _item = item;
-        //}
+        //public override string ItemType => "Aged Brie";
 
-        public override string ItemType => "Aged Brie";
+        public string Name { get; set; }
+        public int SellIn { get; set; }
+        public int Quality { get; set; }
+        public string ItemType { get; set; }
 
-        public override void UpdateItem()
-        {
-            SellIn -= 1;
-            if (SellIn <= 0) Quality += 2;
-            else Quality += 1;
-        }
+        private void UpdateSellIn() => SellIn--;
+
+        public void UpdateItem() => UpdateSellIn();
+
+        public void UpdateQuality() => Quality = SellIn <= 0 ? Quality += 2 : Quality += 1;
     }
 
 }
